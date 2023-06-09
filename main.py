@@ -15,13 +15,14 @@ print("\n")
 print('Filtro 2')
 print("\n")
 filtro2 = tabla.query("Ciudad == 'Caucasia'")
-print(filtro2.describe())
+estadisticasFiltro2 = filtro2.describe()
+print(filtro2)
+print("\n")
+print(estadisticasFiltro2)
 print("\n")
 
 
-# FILTRO 3: Filtrar todos los datos de las veredas Rio Arriba y La Salazar de
-# Belmira
-# print(tabla({'Ciudad': ["Belrmira"], "Vereda": ['Rio Arriba', 'La Salazar']}))
+# FILTRO 3: Filtrar todos los datos de las veredas Rio Arriba y La Salazar de Belmira
 print('Filtro 3')
 print("\n")
 filtro3 = tabla.query(
@@ -34,8 +35,11 @@ print("\n")
 # además las medias de cada ítem del dataframe
 print('Filtro 4')
 print("\n")
-datos = tabla.query("Ciudad == 'Bello' and Vereda == 'Quitasol'")
-print(datos)
+filtro4 = tabla.query("Ciudad == 'Bello' and Vereda == 'Quitasol'")
+mean = filtro4.mean(numeric_only=True)
+print(filtro4)
+print("\n")
+print(mean)
 print("\n")
 
 
