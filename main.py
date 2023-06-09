@@ -1,7 +1,10 @@
 import pandas as pd
 from helpers.crearTablasHTML import crearTabla
+import matplotlib.pyplot as plt
+import numpy as np
 
 tabla = pd.read_csv("./data/Siembras.csv")
+
 
 # FILTRO1: Encontrar todos los datos de santa fe de Antioquia donde se
 # tengan siembras de + de 250 arboles
@@ -11,6 +14,23 @@ filtro1 = tabla.query("Ciudad == 'Santa Fe de Antioquia' and Arboles > 250")
 print(filtro1)
 crearTabla(filtro1, "arbolesSantaFeDeAntioquia")
 print("\n")
+
+# Creamos un gráfico de barras de la edad contra el nombre
+fig, ax = plt.subplots()
+# Define las ubicaciones de las barras y su ancho
+bar_locations = np.arange(filtro1.shape[0])
+bar_width = 0.5
+# Dibuja las barras para cada variable, ajustando la ubicación para que no se superpongan
+ax.bar(bar_locations, filtro1['Arboles'], width=bar_width, label='Arboles')
+# Define las etiquetas del eje x usando las etiquetas de las filas del DataFrame
+ax.set_xticks(bar_locations)
+ax.set_xticklabels(filtro1.index)
+
+ax.set_xlabel('Santa Fe de Antioquia')
+ax.set_ylabel('Arboles')
+ax.set_title('Arboles - Santa Fe de Antioquia')
+ax.legend()
+plt.show()
 
 
 # FILTRO2: Filtrar todos los datos de Caucasia e interpretar sus estadísticas
