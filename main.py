@@ -1,4 +1,5 @@
 import pandas as pd
+from helpers.crearTablasHTML import crearTabla
 
 tabla = pd.read_csv("./data/Siembras.csv")
 
@@ -8,6 +9,7 @@ print('Filtro 1')
 print("\n")
 filtro1 = tabla.query("Ciudad == 'Santa Fe de Antioquia' and Arboles > 250")
 print(filtro1)
+crearTabla(filtro1, "arbolesSantaFeDeAntioquia")
 print("\n")
 
 
@@ -19,6 +21,7 @@ estadisticasFiltro2 = filtro2.describe()
 print(filtro2)
 print("\n")
 print(estadisticasFiltro2)
+crearTabla(estadisticasFiltro2, "estadisticasCaucasia")
 print("\n")
 
 
@@ -28,6 +31,7 @@ print("\n")
 filtro3 = tabla.query(
     "Ciudad == 'Belmira' and Vereda == 'La Salazar' or Vereda == 'Rio Arriba'")
 print(filtro3)
+crearTabla(filtro3, "datosRioArribaLaSalazar")
 print("\n")
 
 
@@ -40,6 +44,7 @@ mean = filtro4.mean(numeric_only=True)
 print(filtro4)
 print("\n")
 print(mean)
+crearTabla(filtro4, "mediasQuitasol")
 print("\n")
 
 
@@ -47,8 +52,9 @@ print("\n")
 # de + de 100 arboles
 print('Filtro 5')
 print("\n")
-filtro5 = tabla.query("Arboles > 100")
+filtro5 = tabla.query("Ciudad == 'Caramanta' and Arboles > 100")
 print(filtro5)
+crearTabla(filtro5, "datosCaramantaArboles")
 print("\n")
 
 
@@ -58,4 +64,5 @@ print('Filtro 6')
 print("\n")
 filtro6 = tabla.query("Ciudad == 'Yarumal' and Vereda == 'Mallarino'")
 print(filtro6)
+crearTabla(filtro6, "datosMallarino")
 print("\n")
